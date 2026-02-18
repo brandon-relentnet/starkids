@@ -10,9 +10,11 @@ import {
   Heart,
   ArrowRight,
   CheckCircle,
+  Sparkles,
 } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
 import PageHero from '../components/PageHero'
+import AnimatedCounter from '../components/AnimatedCounter'
 
 export const Route = createFileRoute('/programs')({
   component: ProgramsPage,
@@ -39,6 +41,7 @@ const programs = [
     color: 'text-gold',
     bg: 'bg-gold/8',
     borderColor: 'border-gold/20',
+    glowColor: 'bg-gold/5',
     features: [
       'After-school tutoring in core subjects',
       'STEM workshops and coding camps',
@@ -47,7 +50,8 @@ const programs = [
       'Summer learning camps to prevent learning loss',
       'Reading buddies program for early literacy',
     ],
-    stat: '12,000+',
+    stat: '12,000',
+    statSuffix: '+',
     statLabel: 'students tutored annually',
   },
   {
@@ -60,6 +64,7 @@ const programs = [
     color: 'text-coral',
     bg: 'bg-coral/8',
     borderColor: 'border-coral/20',
+    glowColor: 'bg-coral/5',
     features: [
       'Free health screenings and check-ups',
       'Mental health counseling and support groups',
@@ -68,7 +73,8 @@ const programs = [
       'Vision and dental care referrals',
       'Trauma-informed care training for families',
     ],
-    stat: '8,500+',
+    stat: '8,500',
+    statSuffix: '+',
     statLabel: 'health screenings provided',
   },
   {
@@ -81,6 +87,7 @@ const programs = [
     color: 'text-sage',
     bg: 'bg-sage/8',
     borderColor: 'border-sage/20',
+    glowColor: 'bg-sage/5',
     features: [
       'Daily after-school and weekend meal programs',
       'Summer meal service in underserved areas',
@@ -89,7 +96,8 @@ const programs = [
       'Holiday meal baskets for families in need',
       'School breakfast backpack programs',
     ],
-    stat: '500,000+',
+    stat: '500,000',
+    statSuffix: '+',
     statLabel: 'meals served last year',
   },
   {
@@ -102,6 +110,7 @@ const programs = [
     color: 'text-gold',
     bg: 'bg-gold/8',
     borderColor: 'border-gold/20',
+    glowColor: 'bg-gold/5',
     features: [
       'One-on-one mentor matching',
       'Career exploration and job shadowing',
@@ -110,7 +119,8 @@ const programs = [
       'Group mentoring circles',
       'College and trade school campus visits',
     ],
-    stat: '3,200+',
+    stat: '3,200',
+    statSuffix: '+',
     statLabel: 'active mentor-mentee pairs',
   },
   {
@@ -123,6 +133,7 @@ const programs = [
     color: 'text-coral',
     bg: 'bg-coral/8',
     borderColor: 'border-coral/20',
+    glowColor: 'bg-coral/5',
     features: [
       'Emergency supply kits (clothing, hygiene, school supplies)',
       'Disaster relief coordination',
@@ -131,7 +142,8 @@ const programs = [
       'Utility and rent assistance for families in crisis',
       'Back-to-school drives for displaced families',
     ],
-    stat: '4,800+',
+    stat: '4,800',
+    statSuffix: '+',
     statLabel: 'families assisted in emergencies',
   },
   {
@@ -144,6 +156,7 @@ const programs = [
     color: 'text-sage',
     bg: 'bg-sage/8',
     borderColor: 'border-sage/20',
+    glowColor: 'bg-sage/5',
     features: [
       'Community festivals and family fun days',
       'Holiday gift drives and celebrations',
@@ -152,7 +165,8 @@ const programs = [
       'Partnerships with local businesses and churches',
       'Youth volunteer and service-learning opportunities',
     ],
-    stat: '150+',
+    stat: '150',
+    statSuffix: '+',
     statLabel: 'community events hosted annually',
   },
 ]
@@ -163,48 +177,48 @@ function ProgramsPage() {
       <PageHero
         title="Our Programs"
         subtitle="Six comprehensive programs working together to support the whole child \u2014 mind, body, and spirit."
+        large
       />
 
       {/* === PROGRAMS === */}
-      <section className="py-20 sm:py-28 bg-cream">
+      <section className="py-24 sm:py-32 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16 sm:space-y-24">
+          <div className="space-y-20 sm:space-y-28">
             {programs.map((program, index) => (
-              <FadeIn key={program.id}>
+              <div key={program.id}>
                 <div
                   id={program.id}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start ${
-                    index % 2 !== 0 ? 'lg:direction-rtl' : ''
-                  }`}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start"
                 >
                   {/* Content */}
-                  <div
+                  <FadeIn
+                    variant={index % 2 === 0 ? 'left' : 'right'}
                     className={index % 2 !== 0 ? 'lg:order-2' : 'lg:order-1'}
                   >
                     <div
-                      className={`w-12 h-12 ${program.bg} rounded-xl flex items-center justify-center mb-5`}
+                      className={`w-14 h-14 ${program.bg} rounded-2xl flex items-center justify-center mb-5`}
                     >
                       <program.icon
                         aria-hidden="true"
-                        className={`w-6 h-6 ${program.color}`}
+                        className={`w-7 h-7 ${program.color}`}
                         strokeWidth={1.5}
                       />
                     </div>
-                    <h2 className="font-display text-3xl sm:text-4xl font-semibold text-navy mb-2 tracking-tight">
+                    <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-navy mb-2 tracking-tight">
                       {program.title}
                     </h2>
                     <p
-                      className={`${program.color} font-medium text-sm mb-4 italic`}
+                      className={`${program.color} font-medium text-sm mb-5 italic`}
                     >
                       {program.tagline}
                     </p>
-                    <p className="text-navy/60 leading-relaxed mb-6">
+                    <p className="text-navy/55 leading-relaxed mb-7 text-[15px] sm:text-base">
                       {program.description}
                     </p>
 
-                    {/* Stat highlight */}
+                    {/* Stat highlight with animated counter */}
                     <div
-                      className={`inline-flex items-center gap-3 px-5 py-3 ${program.bg} rounded-xl mb-6`}
+                      className={`inline-flex items-center gap-3 px-5 py-3.5 ${program.bg} rounded-xl`}
                     >
                       <Star
                         aria-hidden="true"
@@ -213,92 +227,125 @@ function ProgramsPage() {
                       />
                       <div>
                         <span className="font-display text-xl font-bold text-navy">
-                          {program.stat}
+                          <AnimatedCounter
+                            value={program.stat}
+                            duration={1800}
+                          />
+                          {program.statSuffix}
                         </span>
-                        <span className="text-navy/50 text-sm ml-1.5">
+                        <span className="text-navy/45 text-sm ml-1.5">
                           {program.statLabel}
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </FadeIn>
 
                   {/* Features */}
-                  <div
-                    className={`${index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}`}
+                  <FadeIn
+                    variant={index % 2 === 0 ? 'right' : 'left'}
+                    delay={100}
+                    className={index % 2 !== 0 ? 'lg:order-1' : 'lg:order-2'}
                   >
                     <div
-                      className={`bg-white rounded-2xl border ${program.borderColor} p-7 sm:p-8`}
+                      className={`bg-white rounded-2xl border ${program.borderColor} p-7 sm:p-8 card-hover relative overflow-hidden`}
                     >
-                      <h3 className="font-display text-lg font-semibold text-navy mb-5">
-                        What This Program Provides
-                      </h3>
-                      <ul className="space-y-3.5">
-                        {program.features.map((feature) => (
-                          <li
-                            key={feature}
-                            className="flex items-start gap-3 text-navy/60 text-[15px]"
-                          >
-                            <CheckCircle
-                              aria-hidden="true"
-                              className={`w-5 h-5 ${program.color} flex-shrink-0 mt-0.5`}
-                              strokeWidth={1.5}
-                            />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      {/* Accent glow in corner */}
+                      <div
+                        className={`absolute -top-10 -right-10 w-40 h-40 ${program.glowColor} rounded-full blur-3xl pointer-events-none`}
+                        aria-hidden="true"
+                      />
+                      <div className="relative z-10">
+                        <h3 className="font-display text-lg font-semibold text-navy mb-5">
+                          What This Program Provides
+                        </h3>
+                        <ul className="space-y-3.5">
+                          {program.features.map((feature) => (
+                            <li
+                              key={feature}
+                              className="flex items-start gap-3 text-navy/55 text-[15px]"
+                            >
+                              <CheckCircle
+                                aria-hidden="true"
+                                className={`w-5 h-5 ${program.color} flex-shrink-0 mt-0.5`}
+                                strokeWidth={1.5}
+                              />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
+                  </FadeIn>
                 </div>
 
                 {/* Divider between programs */}
                 {index < programs.length - 1 && (
-                  <div
-                    className="flex items-center justify-center gap-2 mt-16 sm:mt-24"
-                    aria-hidden="true"
-                  >
-                    <div className="w-12 h-px bg-navy/10" />
-                    <Star
-                      className="w-4 h-4 text-gold/30 fill-gold/15"
-                      strokeWidth={1.5}
-                    />
-                    <div className="w-12 h-px bg-navy/10" />
-                  </div>
+                  <FadeIn variant="scale">
+                    <div
+                      className="flex items-center justify-center gap-3 mt-20 sm:mt-28"
+                      aria-hidden="true"
+                    >
+                      <div className="w-16 h-px bg-gradient-to-r from-transparent to-navy/10" />
+                      <Star
+                        className="w-4 h-4 text-gold/30 fill-gold/15"
+                        strokeWidth={1.5}
+                      />
+                      <Sparkles
+                        className="w-3 h-3 text-gold/20"
+                        strokeWidth={1.5}
+                      />
+                      <div className="w-16 h-px bg-gradient-to-l from-transparent to-navy/10" />
+                    </div>
+                  </FadeIn>
                 )}
-              </FadeIn>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* === CTA === */}
-      <section className="py-20 sm:py-28 bg-gradient-to-b from-navy to-midnight starfield">
-        <FadeIn className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Star
+      <section className="py-24 sm:py-32 bg-gradient-to-b from-navy to-midnight starfield overflow-hidden">
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Orbs */}
+          <div
+            className="absolute inset-0 pointer-events-none"
             aria-hidden="true"
-            className="w-10 h-10 text-gold fill-gold/30 mx-auto mb-6"
-            strokeWidth={1.5}
-          />
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold text-white mb-5 tracking-tight leading-tight">
-            Help Us Expand
-            <br />
-            These Programs
-          </h2>
-          <p className="text-lg text-white/50 mb-10 max-w-xl mx-auto leading-relaxed">
-            Every donation, volunteer hour, and partnership helps us reach more
-            children. Join us in making a difference.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/get-involved" className="btn-gold text-base">
-              <Heart aria-hidden="true" className="w-5 h-5" strokeWidth={2.5} />
-              Support Our Programs
-            </Link>
-            <Link to="/contact" className="btn-outline-light text-base">
-              Partner With Us
-              <ArrowRight aria-hidden="true" className="w-5 h-5" />
-            </Link>
+          >
+            <div className="orb orb-gold w-[400px] h-[400px] -top-32 left-1/2 -translate-x-1/2" />
           </div>
-        </FadeIn>
+
+          <FadeIn variant="scale" className="relative z-10">
+            <Star
+              aria-hidden="true"
+              className="w-10 h-10 text-gold fill-gold/30 mx-auto mb-6 glow-text-gold"
+              strokeWidth={1.5}
+            />
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-5 tracking-tight leading-tight">
+              Help Us Expand
+              <br />
+              These Programs
+            </h2>
+            <p className="text-lg text-white/45 mb-10 max-w-xl mx-auto leading-relaxed">
+              Every donation, volunteer hour, and partnership helps us reach
+              more children. Join us in making a difference.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/get-involved" className="btn-gold text-base">
+                <Heart
+                  aria-hidden="true"
+                  className="w-5 h-5"
+                  strokeWidth={2.5}
+                />
+                Support Our Programs
+              </Link>
+              <Link to="/contact" className="btn-outline-light text-base">
+                Partner With Us
+                <ArrowRight aria-hidden="true" className="w-5 h-5" />
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
       </section>
     </div>
   )

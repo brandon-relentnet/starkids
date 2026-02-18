@@ -1,10 +1,21 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
+type FadeVariant = 'up' | 'left' | 'right' | 'scale' | 'blur'
+
 interface FadeInProps {
   children: ReactNode
   className?: string
   delay?: number
   threshold?: number
+  variant?: FadeVariant
+}
+
+const variantClassMap: Record<FadeVariant, string> = {
+  up: 'fade-section',
+  left: 'fade-section-left',
+  right: 'fade-section-right',
+  scale: 'fade-section-scale',
+  blur: 'fade-section-blur',
 }
 
 export default function FadeIn({
@@ -12,6 +23,7 @@ export default function FadeIn({
   className = '',
   delay = 0,
   threshold = 0.15,
+  variant = 'up',
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -27,17 +39,19 @@ export default function FadeIn({
           observer.unobserve(element)
         }
       },
-      { threshold, rootMargin: '0px 0px -40px 0px' },
+      { threshold, rootMargin: '0px 0px -60px 0px' },
     )
 
     observer.observe(element)
     return () => observer.disconnect()
   }, [threshold])
 
+  const baseClass = variantClassMap[variant]
+
   return (
     <div
       ref={ref}
-      className={`fade-section ${isVisible ? 'is-visible' : ''} ${className}`}
+      className={`${baseClass} ${isVisible ? 'is-visible' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}

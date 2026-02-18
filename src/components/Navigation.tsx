@@ -46,7 +46,7 @@ export default function Navigation() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'glass-dark shadow-lg shadow-black/10 border-b border-white/5'
+            ? 'glass-dark shadow-lg shadow-black/20 border-b border-white/5'
             : 'bg-transparent'
         }`}
       >
@@ -61,13 +61,12 @@ export default function Navigation() {
               <div className="relative">
                 <Star
                   aria-hidden="true"
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-gold fill-gold transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-gold fill-gold transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
                   strokeWidth={1.5}
                 />
-                <Star
+                <div
+                  className="absolute inset-0 w-7 h-7 sm:w-8 sm:h-8 bg-gold/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   aria-hidden="true"
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-gold-light/30 fill-gold-light/20 absolute inset-0 animate-pulse-soft"
-                  strokeWidth={1.5}
                 />
               </div>
               <span className="font-display text-xl sm:text-2xl font-semibold text-white tracking-tight">
@@ -77,15 +76,15 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="px-4 py-2 text-sm font-medium text-white/70 rounded-lg transition-all duration-200 hover:text-white hover:bg-white/8"
+                  className="relative px-4 py-2 text-sm font-medium text-white/60 rounded-lg transition-all duration-300 hover:text-white hover:bg-white/5"
                   activeProps={{
                     className:
-                      'px-4 py-2 text-sm font-medium text-gold rounded-lg bg-gold/10',
+                      'relative px-4 py-2 text-sm font-medium text-gold rounded-lg bg-gold/8',
                   }}
                   activeOptions={{ exact: link.to === '/' }}
                 >
@@ -98,7 +97,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 to="/get-involved"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-midnight text-sm font-semibold rounded-lg hover:bg-gold-light transition-all duration-200 hover:shadow-lg hover:shadow-gold/20"
+                className="group relative inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-midnight text-sm font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/25 hover:-translate-y-0.5"
               >
                 <Heart
                   aria-hidden="true"
@@ -129,7 +128,7 @@ export default function Navigation() {
       >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-midnight/80 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`absolute inset-0 bg-midnight/90 backdrop-blur-md transition-opacity duration-300 ${
             isOpen ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={() => setIsOpen(false)}
@@ -143,12 +142,12 @@ export default function Navigation() {
 
         {/* Drawer */}
         <aside
-          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-navy border-l border-white/10 shadow-2xl transform transition-transform duration-300 ease-out ${
+          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-navy/95 backdrop-blur-xl border-l border-white/8 shadow-2xl transform transition-transform duration-300 ease-out ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           {/* Drawer Header */}
-          <div className="flex items-center justify-between p-5 border-b border-white/10">
+          <div className="flex items-center justify-between p-5 border-b border-white/8">
             <div className="flex items-center gap-2">
               <Star
                 aria-hidden="true"
@@ -175,10 +174,10 @@ export default function Navigation() {
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-3.5 text-white/70 rounded-lg hover:bg-white/8 hover:text-white transition-colors font-medium"
+                className="flex items-center gap-3 px-4 py-3.5 text-white/60 rounded-xl hover:bg-white/5 hover:text-white transition-all duration-200 font-medium"
                 activeProps={{
                   className:
-                    'flex items-center gap-3 px-4 py-3.5 text-gold bg-gold/10 rounded-lg font-medium',
+                    'flex items-center gap-3 px-4 py-3.5 text-gold bg-gold/8 rounded-xl font-medium',
                 }}
                 activeOptions={{ exact: link.to === '/' }}
               >
@@ -186,11 +185,11 @@ export default function Navigation() {
               </Link>
             ))}
 
-            <div className="mt-4 pt-4 border-t border-white/10">
+            <div className="mt-4 pt-4 border-t border-white/8">
               <Link
                 to="/get-involved"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-gold text-midnight font-semibold rounded-lg hover:bg-gold-light transition-colors"
+                className="flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-gold text-midnight font-semibold rounded-xl hover:bg-gold-light transition-colors"
               >
                 <Heart
                   aria-hidden="true"

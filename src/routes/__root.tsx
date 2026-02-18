@@ -8,6 +8,7 @@ import {
 import { Star, Home, ArrowRight } from 'lucide-react'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
+import ScrollProgress from '../components/ScrollProgress'
 import appCss from '../styles.css?url'
 
 export const Route = createRootRoute({
@@ -89,7 +90,7 @@ function NotFoundPage() {
           Page Not Found
         </p>
 
-        <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-bold text-white mb-4 tracking-tight">
+        <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-bold text-white mb-4 tracking-tight glow-text-gold">
           404
         </h1>
 
@@ -119,7 +120,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="font-body">
+      <body className="font-body grain-overlay">
+        <ScrollProgress />
         <Navigation />
         <main>{children}</main>
         <Footer />
