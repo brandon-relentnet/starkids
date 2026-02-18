@@ -27,7 +27,18 @@ export const Route = createFileRoute('/')({
         content:
           'Star Kids is a 501(c)(3) nonprofit serving 50,000+ children across 200+ communities with education, health, nutrition, and mentorship programs.',
       },
+      {
+        property: 'og:title',
+        content: 'Star Kids | Helping Every Child Shine',
+      },
+      {
+        property: 'og:description',
+        content:
+          'A 501(c)(3) nonprofit serving 50,000+ children with education, health, nutrition, and mentorship programs.',
+      },
+      { property: 'og:url', content: 'https://starkids.relentnet.dev/' },
     ],
+    links: [{ rel: 'canonical', href: 'https://starkids.relentnet.dev/' }],
   }),
 })
 

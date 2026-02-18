@@ -33,7 +33,8 @@ export const Route = createRootRoute({
           'A 501(c)(3) nonprofit dedicated to helping children across America reach for the stars.',
       },
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://starkids.org' },
+      { property: 'og:url', content: 'https://starkids.relentnet.dev' },
+      { property: 'og:site_name', content: 'Star Kids Foundation' },
     ],
     links: [
       { rel: 'icon', href: '/favicon.ico' },
@@ -47,6 +48,44 @@ export const Route = createRootRoute({
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&display=swap',
+      },
+    ],
+    scripts: [
+      {
+        tag: 'script',
+        attrs: { type: 'application/ld+json' },
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'NonprofitOrganization',
+              '@id': 'https://starkids.relentnet.dev/#organization',
+              name: 'Star Kids Foundation',
+              url: 'https://starkids.relentnet.dev',
+              description:
+                'A 501(c)(3) nonprofit dedicated to providing education, health, nutrition, mentorship, and emergency aid to children across America.',
+              nonprofitStatus: '501c3',
+              areaServed: {
+                '@type': 'Country',
+                name: 'United States',
+              },
+              contactPoint: {
+                '@type': 'ContactPoint',
+                email: 'info@starkids.org',
+                contactType: 'general',
+              },
+            },
+            {
+              '@type': 'WebSite',
+              '@id': 'https://starkids.relentnet.dev/#website',
+              url: 'https://starkids.relentnet.dev',
+              name: 'Star Kids Foundation',
+              publisher: {
+                '@id': 'https://starkids.relentnet.dev/#organization',
+              },
+            },
+          ],
+        }),
       },
     ],
   }),
@@ -121,9 +160,15 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="font-body grain-overlay">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-gold focus:text-midnight focus:font-semibold focus:rounded-xl focus:text-sm focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <ScrollProgress />
         <Navigation />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <Scripts />
       </body>

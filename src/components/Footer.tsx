@@ -9,12 +9,12 @@ const footerLinks = {
     { to: '/contact' as const, label: 'Contact' },
   ],
   programs: [
-    { label: 'Star Scholars', hash: '#scholars' },
-    { label: 'Star Wellness', hash: '#wellness' },
-    { label: 'Star Plates', hash: '#plates' },
-    { label: 'Star Guides', hash: '#guides' },
-    { label: 'Star Response', hash: '#response' },
-    { label: 'Star Together', hash: '#together' },
+    { label: 'Star Scholars', hash: 'scholars' },
+    { label: 'Star Wellness', hash: 'wellness' },
+    { label: 'Star Plates', hash: 'plates' },
+    { label: 'Star Guides', hash: 'guides' },
+    { label: 'Star Response', hash: 'response' },
+    { label: 'Star Together', hash: 'together' },
   ],
 }
 
@@ -39,7 +39,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2.5 mb-5 group">
+            <Link
+              to="/"
+              aria-label="Star Kids Home"
+              className="flex items-center gap-2.5 mb-5 group"
+            >
               <div className="relative">
                 <Star
                   aria-hidden="true"

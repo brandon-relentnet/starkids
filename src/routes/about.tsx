@@ -24,7 +24,18 @@ export const Route = createFileRoute('/about')({
         content:
           'Learn about Star Kids, our mission to empower every child in America, our leadership team, and our 15+ year history of service.',
       },
+      { property: 'og:title', content: 'About Us | Star Kids' },
+      {
+        property: 'og:description',
+        content:
+          'Learn about Star Kids, our mission to empower every child in America, our leadership team, and our 15+ year history of service.',
+      },
+      {
+        property: 'og:url',
+        content: 'https://starkids.relentnet.dev/about',
+      },
     ],
+    links: [{ rel: 'canonical', href: 'https://starkids.relentnet.dev/about' }],
   }),
 })
 

@@ -26,6 +26,22 @@ export const Route = createFileRoute('/programs')({
         content:
           'Discover Star Kids six core programs: Star Scholars, Star Wellness, Star Plates, Star Guides, Star Response, and Star Together.',
       },
+      { property: 'og:title', content: 'Our Programs | Star Kids' },
+      {
+        property: 'og:description',
+        content:
+          'Discover Star Kids six core programs providing education, healthcare, nutrition, mentorship, emergency aid, and community support.',
+      },
+      {
+        property: 'og:url',
+        content: 'https://starkids.relentnet.dev/programs',
+      },
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://starkids.relentnet.dev/programs',
+      },
     ],
   }),
 })

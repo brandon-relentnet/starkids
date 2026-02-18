@@ -24,6 +24,22 @@ export const Route = createFileRoute('/contact')({
         content:
           'Get in touch with Star Kids. Contact us about volunteering, donations, partnerships, or general inquiries.',
       },
+      { property: 'og:title', content: 'Contact Us | Star Kids' },
+      {
+        property: 'og:description',
+        content:
+          'Get in touch with Star Kids. Contact us about volunteering, donations, partnerships, or general inquiries.',
+      },
+      {
+        property: 'og:url',
+        content: 'https://starkids.relentnet.dev/contact',
+      },
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://starkids.relentnet.dev/contact',
+      },
     ],
   }),
 })

@@ -30,6 +30,22 @@ export const Route = createFileRoute('/get-involved')({
         content:
           'Make a difference in a child\u2019s life. Donate, volunteer, or partner with Star Kids to help children across America.',
       },
+      { property: 'og:title', content: 'Get Involved | Star Kids' },
+      {
+        property: 'og:description',
+        content:
+          'Make a difference in a child\u2019s life. Donate, volunteer, or partner with Star Kids to help children across America.',
+      },
+      {
+        property: 'og:url',
+        content: 'https://starkids.relentnet.dev/get-involved',
+      },
+    ],
+    links: [
+      {
+        rel: 'canonical',
+        href: 'https://starkids.relentnet.dev/get-involved',
+      },
     ],
   }),
 })
