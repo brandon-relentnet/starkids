@@ -124,7 +124,7 @@ function HomePage() {
   return (
     <div>
       {/* === HERO === */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-b from-midnight via-navy to-navy-light overflow-hidden">
+      <section className="relative h-screen flex items-center bg-gradient-to-b from-midnight via-navy to-navy-light overflow-hidden">
         {/* Canvas starfield */}
         <StarCanvas starCount={250} shootingStarInterval={3500} />
 
@@ -235,7 +235,7 @@ function HomePage() {
 
         {/* Bottom gradient fade */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-cream to-transparent z-10"
+          className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-cream via-cream/40 to-transparent z-10"
           aria-hidden="true"
         />
       </section>
@@ -244,6 +244,7 @@ function HomePage() {
       <section className="relative py-24 sm:py-32 bg-cream aurora-bg">
         <FadeIn
           variant="blur"
+          threshold={0.3}
           className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
           <div className="section-divider mb-8" />
