@@ -232,16 +232,15 @@ function HomePage() {
             <div className="w-1 h-2 rounded-full bg-gold/50 animate-pulse-soft" />
           </div>
         </div>
-
-        {/* Bottom gradient fade */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-cream via-cream/40 to-transparent z-10"
-          aria-hidden="true"
-        />
       </section>
 
       {/* === MISSION STATEMENT === */}
-      <section className="relative py-24 sm:py-32 bg-cream aurora-bg">
+      <section className="relative pt-32 sm:pt-40 pb-24 sm:pb-32 bg-cream aurora-bg">
+        {/* Top gradient blending from hero navy into cream */}
+        <div
+          className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-navy-light to-transparent"
+          aria-hidden="true"
+        />
         <FadeIn
           variant="blur"
           threshold={0.3}
