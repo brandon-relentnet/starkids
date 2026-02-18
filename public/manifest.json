@@ -1,0 +1,15 @@
+{
+  "short_name": "Star Kids",
+  "name": "Star Kids Foundation - Helping Every Child Shine",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#080c1a",
+  "background_color": "#fefcf5"
+}

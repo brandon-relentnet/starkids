@@ -1,0 +1,482 @@
+@import 'tailwindcss';
+
+/* ─── Star Kids Design System ─── */
+
+@theme {
+  /* Brand Colors */
+  --color-midnight: #080c1a;
+  --color-navy: #0e1528;
+  --color-navy-light: #172040;
+  --color-slate-dark: #1e293b;
+
+  --color-gold: #c8a032;
+  --color-gold-light: #dbb840;
+  --color-gold-pale: #f5e6a3;
+  --color-gold-glow: rgba(200, 160, 50, 0.15);
+
+  --color-coral: #d4604a;
+  --color-coral-light: #e07a66;
+
+  --color-cream: #fefcf5;
+  --color-sand: #f5f0e4;
+  --color-warm-gray: #e8e3d8;
+
+  --color-sage: #2a7a62;
+  --color-sage-light: #3a9b80;
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+
+  /* Animations */
+  --animate-fade-up: fade-up 0.7s ease-out both;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-fade-up-slow: fade-up 1s ease-out both;
+  --animate-scale-in: scale-in 0.5s ease-out both;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+  --animate-star-twinkle: star-twinkle 4s ease-in-out infinite;
+}
+
+/* ─── Keyframes ─── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* ─── Base Styles ─── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply m-0 bg-cream text-navy;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-midnight);
+}
+
+/* ─── Scrollbar ─── */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-light);
+}
+
+/* ─── Starfield Background ─── */
+
+.starfield {
+  position: relative;
+  overflow: hidden;
+}
+
+.starfield::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      1.5px 1.5px at 8% 15%,
+      rgba(255, 255, 255, 0.6) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 15% 68%,
+      rgba(255, 255, 255, 0.35) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.2px 1.2px at 22% 35%,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 30% 82%,
+      rgba(255, 255, 255, 0.25) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      2px 2px at 35% 12%,
+      rgba(200, 160, 50, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 42% 55%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.5px 1.5px at 48% 28%,
+      rgba(255, 255, 255, 0.55) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 55% 72%,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.8px 1.8px at 60% 8%,
+      rgba(200, 160, 50, 0.45) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 65% 45%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.2px 1.2px at 72% 62%,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 78% 20%,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.5px 1.5px at 82% 78%,
+      rgba(200, 160, 50, 0.4) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 88% 38%,
+      rgba(255, 255, 255, 0.35) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.3px 1.3px at 92% 85%,
+      rgba(255, 255, 255, 0.45) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 95% 52%,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.2px 1.2px at 5% 90%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 38% 95%,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1.5px 1.5px at 52% 5%,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      1px 1px at 68% 92%,
+      rgba(200, 160, 50, 0.35) 0%,
+      transparent 100%
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.starfield > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Nebula Glow Effects ─── */
+
+.nebula-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 600px 400px at 20% 40%,
+      rgba(200, 160, 50, 0.06) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 500px 300px at 75% 25%,
+      rgba(212, 96, 74, 0.04) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 400px 500px at 50% 80%,
+      rgba(42, 122, 98, 0.03) 0%,
+      transparent 70%
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Button Styles ─── */
+
+.btn-gold {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gold text-midnight font-semibold rounded-lg;
+  transition: all 350ms
+    linear(
+      0,
+      0.3566,
+      0.7963,
+      1.0045,
+      1.0459,
+      1.0287,
+      1.0088,
+      0.9996,
+      1,
+      0.9987,
+      0.9996,
+      1
+    );
+}
+
+.btn-gold:hover {
+  @apply bg-gold-light shadow-lg;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px rgba(200, 160, 50, 0.3),
+    0 2px 8px rgba(200, 160, 50, 0.2);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-outline-light {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 font-semibold rounded-lg border-2 border-white/30 text-white;
+  transition: all 350ms
+    linear(
+      0,
+      0.3566,
+      0.7963,
+      1.0045,
+      1.0459,
+      1.0287,
+      1.0088,
+      0.9996,
+      1,
+      0.9987,
+      0.9996,
+      1
+    );
+}
+
+.btn-outline-light:hover {
+  @apply bg-white/10 border-white/60;
+  transform: translateY(-2px);
+}
+
+.btn-outline-dark {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 font-semibold rounded-lg border-2 border-navy/20 text-navy;
+  transition: all 350ms
+    linear(
+      0,
+      0.3566,
+      0.7963,
+      1.0045,
+      1.0459,
+      1.0287,
+      1.0088,
+      0.9996,
+      1,
+      0.9987,
+      0.9996,
+      1
+    );
+}
+
+.btn-outline-dark:hover {
+  @apply bg-navy/5 border-navy/40;
+  transform: translateY(-2px);
+}
+
+/* ─── Card Hover ─── */
+
+.card-hover {
+  transition: all 350ms
+    linear(
+      0,
+      0.3566,
+      0.7963,
+      1.0045,
+      1.0459,
+      1.0287,
+      1.0088,
+      0.9996,
+      1,
+      0.9987,
+      0.9996,
+      1
+    );
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* ─── Section Dividers ─── */
+
+.section-divider {
+  @apply w-16 h-1 bg-gold rounded-full mx-auto;
+}
+
+/* ─── Glass Effect ─── */
+
+.glass-dark {
+  background: rgba(14, 21, 40, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Text Gradient ─── */
+
+.text-gradient-gold {
+  background: linear-gradient(
+    135deg,
+    var(--color-gold),
+    var(--color-gold-light)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Fade-in on Scroll (JS will add .is-visible) ─── */
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.fade-section.is-visible > .stagger-child:nth-child(1) {
+  transition-delay: 0ms;
+}
+.fade-section.is-visible > .stagger-child:nth-child(2) {
+  transition-delay: 80ms;
+}
+.fade-section.is-visible > .stagger-child:nth-child(3) {
+  transition-delay: 160ms;
+}
+.fade-section.is-visible > .stagger-child:nth-child(4) {
+  transition-delay: 240ms;
+}
+.fade-section.is-visible > .stagger-child:nth-child(5) {
+  transition-delay: 320ms;
+}
+.fade-section.is-visible > .stagger-child:nth-child(6) {
+  transition-delay: 400ms;
+}
+
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.fade-section.is-visible > .stagger-child {
+  opacity: 1;
+  transform: translateY(0);
+}
