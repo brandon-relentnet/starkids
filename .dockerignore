@@ -1,0 +1,10 @@
+node_modules
+.output
+dist
+.wxt
+.git
+.github
+*.md
+.env*
+.vscode
+.idea
