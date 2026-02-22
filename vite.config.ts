@@ -21,7 +21,8 @@ const config = defineConfig({
     routeRules: {
       '/**': {
         headers: {
-          'X-Frame-Options': 'DENY',
+          'Content-Security-Policy':
+            "frame-ancestors 'self' https://relentnet.com",
           'X-Content-Type-Options': 'nosniff',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
           'Permissions-Policy':
